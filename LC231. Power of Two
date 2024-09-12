@@ -1,0 +1,29 @@
+class Solution {
+public:
+
+    int countSetBits(int n){
+        if(n==0) return 0;
+
+        int count =  0;
+        while(n!=0){
+            if(n&1 == 1) count++;
+
+            n = n >> 1;
+        }
+        return count;
+    }
+    bool isPowerOfTwo(int n) {
+        if (n <= 0) return false; // Handle edge case
+
+        int setBits = countSetBits(n);
+
+        if(setBits == 1){
+            return true;
+        }
+
+        return false;
+    }
+};
+
+
+
