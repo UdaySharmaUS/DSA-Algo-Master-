@@ -1,0 +1,36 @@
+#include<iostream>
+using namespace std;
+
+int search(int mat[4][4] , int n , int target){
+     
+     int row = 0;
+     int col = n-1;
+
+     while(row < n && col >=0 ){
+        int element = mat[row][col];
+
+        if(element == target){
+            cout<<"element found"<<endl;
+            return 1; // element is present
+        }
+        else if(element > target){
+            col--;
+        }
+        else{
+            row++;
+        }
+     }
+     return 0;
+}
+
+int main(){
+    int mat[4][4] = { { 10, 20, 30, 40 },
+                      { 15, 25, 35, 45 },
+                      { 27, 29, 37, 48 },
+                      { 32, 33, 39, 50 } };
+
+    // Function call
+    search(mat, 4, 29);
+
+    return 0;
+}
