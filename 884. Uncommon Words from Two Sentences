@@ -1,0 +1,28 @@
+"The Basic approach is to use the mapping to keep the count of every word in a string and then checking the count of them at the end. If it is equal to 1 thats ittt!!!! add it in the ans vector"
+"but there is big problem of how to handle the spaces in between of words ie how to get the separated words out of the strings given for that we have to use the stringstream as done in the code."
+
+class Solution {
+public:
+    vector<string> uncommonFromSentences(string s1, string s2) {
+        vector<string> ans;
+
+        unordered_map<string,int> mapp;
+
+        string s = s1 + " " + s2;
+
+        stringstream str(s);
+        string temp;
+
+        while(str >> temp){
+            mapp[temp]++;
+        }
+
+        for(auto it:mapp){
+            if(it.second == 1){
+                ans.push_back(it.first);
+            }
+        }
+
+        return ans;
+    }
+};
