@@ -1,0 +1,100 @@
+// USING MINHEAP DATA STRUCTURE (BETTER APPROACH AS COMPARED TO THE MERGING 2 LISTS AT A TIME IN TERMS OF TIME CPMPLEXITIES)
+class Solution {
+public:
+    ListNode* mergeKLists(vector<ListNode*>& lists) {
+        priority_queue<pair<int,ListNode*> , vector<pair<int,ListNode*>> , greater<pair<int,ListNode*>>> minheap;
+
+        for(auto it: lists){
+            if(it!=NULL){
+                 minheap.push({it->val , it});
+            }
+        } 
+
+        // lets create dummy node
+        ListNode* head = new ListNode(-1);
+        ListNode* ptr = head;
+
+        while(!minheap.empty()){
+            auto it = minheap.top();
+
+            int value  =  it.first;
+            ListNode* temp = it.second;
+
+            minheap.pop();
+
+            if(temp->next){
+                minheap.push({temp->next->val ,temp->next});
+            }
+
+            head->next = temp;
+            head = temp;
+
+        }
+        return ptr->next;
+    }
+};
+
+
+
+
+
+
+USING THE Concept of merging 2 sorted lists
+class Solution {
+public:
+
+        ListNode* solve(ListNode* list1 , ListNode* list2){
+
+        ListNode* head = new ListNode(-1);  // basically created a dummy node
+        ListNode* temp = head;
+
+        while(list1!= NULL && list2!=NULL){
+            if(list1->val < list2->val){
+                head->next = list1;
+                list1 = list1->next;
+                head = head->next;
+            }
+
+            else{
+                head->next = list2;
+                list2 = list2->next;
+                head = head->next;
+            }
+        }
+
+        while(list1!=NULL){
+                head->next = list1;
+                 list1 = list1->next;
+                head = head->next;
+        }
+        
+        while(list2!=NULL){
+                head->next = list2;
+                list2 = list2->next;
+                head = head->next;
+        }
+        return temp->next;
+    }
+
+    ListNode* mergeTwoLists(ListNode* list1, ListNode* list2) {
+        if(list1 == NULL) return list2;
+        if(list2 == NULL) return list1;
+
+       ListNode* head = solve(list1, list2);
+
+        return head;
+    }
+
+    ListNode* mergeKLists(vector<ListNode*>& lists) {
+
+        if(lists.size() == 0) return NULL;
+
+        ListNode* head = lists[0];
+        for(int i= 1 ; i < lists.size()  ; i++){
+          ListNode* temp = mergeTwoLists(head , lists[i]);
+            head = temp;
+        }
+
+        return head;
+    }
+};
