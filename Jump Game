@@ -1,0 +1,46 @@
+https://leetcode.com/problems/jump-game/description/
+
+Hello folks, so today I came up with a very interesting question. It is related to topics like Dynamic Programming, greedy, etc. When i first encountered the ques i was damn sure that it can be done with the help of dp and the solution i came up with this one.
+
+Using DP (TC O(n))
+class Solution {
+public:
+    bool canJump(vector<int>& nums) {
+        int n = nums.size();
+
+        vector<bool> dp(n+1 ,false);
+        dp[n-1] = true;
+
+        for(int i = nums.size()-1 ; i>=0 ;i--){
+            for(int j = 0 ; i+j<dp.size() && j<= nums[i] ; j++){
+                if(dp[i+j] == true){
+                    dp[i] = true;
+                    break;
+                }
+            }
+        } 
+        return dp[0]; 
+    }
+};
+
+** It is a good solution, but then I found one more approach in the comment section, and it was mindblowing, solving it in only O(n) time using Greedy.
+class Solution {
+public:
+    bool canJump(vector<int>& nums) {
+        int size = nums.size();
+        int maxreach = 0;
+
+        for(int i = 0 ; i < nums.size() ;i++){
+            if( i > maxreach){
+                return false;
+            }    
+
+            maxreach = max( maxreach ,  i +  nums[i]);
+        }
+        return true;
+    }
+};
+
+The only intuition behind this solution is that the current index cannot be greater than the maxreach index. ex-> if maxreach index is 4 and we are at the 5th index, then tell how it is possible, we cannot reach till the 5th, maxreach is 4th. 
+
+The above solution is amazing, and I am sorry I don't remember whose comment it was, so sorry for not giving credit. I hope you understand.
