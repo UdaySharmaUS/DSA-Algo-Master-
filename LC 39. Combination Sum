@@ -1,0 +1,45 @@
+Welcome back folks, i hope guys are doing well.
+Today i encountered a really nice problem related to the recursive apporoach it is Combination sum.
+Here if you read the ques you will get to know that the only thing you need to do is to provide the combinations of elements which adds up to make the required sum.
+It looks a bit tough at first that what approach should we follow , and you will eventually end up to the intuition of taking an element and checking the sum now or neglecting it and moving to the next element. i follow the same thing in my code.
+
+Below is the code of the problem.
+
+class Solution {
+public:
+     
+    void solve(vector<int>&candidates , int target , vector<vector<int>> &ans ,vector<int> temp , int index )
+    {
+        // base case  if we reach to the end and the sum == target
+
+        if(index == candidates.size()){
+            if( target == 0){
+                ans.push_back(temp);
+                return ;
+            }
+            return;
+        }
+           
+           // pick it if it is less than the required sum
+           if(candidates[index] <= target){
+           temp.push_back(candidates[index]);
+           solve(candidates , target-candidates[index] , ans , temp , index ); // choose the same index element because same element can be taken again and again
+           temp.pop_back();
+           }
+          
+           // not pick it
+           solve(candidates , target  ,ans , temp , index + 1 ); // move to the next index element
+    }
+    
+    vector<vector<int>> combinationSum(vector<int>& candidates, int target) {
+        vector<vector<int>> ans;
+        
+        vector<int> temp;
+       
+        int index = 0 ;
+
+        solve(candidates , target , ans , temp , index);
+
+        return ans;
+    }
+};
