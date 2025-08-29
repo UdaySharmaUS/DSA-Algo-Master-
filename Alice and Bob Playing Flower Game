@@ -1,0 +1,15 @@
+3021. Alice and Bob Playing Flower Game
+
+class Solution {
+public:
+    long long flowerGame(int n, int m) {
+        return 1LL * n * m / 2;  
+  }
+};
+
+Intuition: If Alice starts the game, it should end up after she picks up the flower. Since there are n,m flowers available. total ways can be ( n*m). But the catch is the only possible ways are where one lane is odd and the other is even. Only then we can achieve the above condition(alice start and end). Makes more sense if we try to dry run using different lane size. Like
+
+Example: Alice starts from the 3 flowers lane, after then bob then alice and so on. In the end last will be picked by alice and there would be no flowers left in any lane. YOU GOT UR WINNER!! : yes she is Alice.
+    *    *
+    *    *
+    *
