@@ -1,0 +1,26 @@
+#include<iostream>
+using namespace std;
+  
+  class Student{
+     
+    private:
+    string name ;
+    int age ;
+    int height;
+
+    public:
+    int getAge(){
+        return this->age;
+    }
+ 
+     // this is ENCAPSULATION as we have encapsulated the data memebrs and the function in a single class 
+  };
+
+int main(){
+
+   Student first;
+
+   cout<<"Everything is allright\n";
+
+    return 0;
+}
