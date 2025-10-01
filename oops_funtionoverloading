@@ -1,0 +1,31 @@
+#include<iostream>
+using namespace std;
+ 
+ class A{
+    
+    public:
+    void sayHello(){
+        cout<<"hello Uday"<<endl;
+    }
+
+    int sayHello(string name , int n){
+        cout<<"hello uday the great\n";
+        return n;
+
+    }
+
+   void sayHello(string name){
+    cout<<"hello \n";
+   }
+ };
+
+int main(){
+   A obj;
+   obj.sayHello();
+   obj.sayHello("abc");
+   obj.sayHello("abc" , 5);
+
+   // this is function overloading ie having the same name but have different function just they have to have different arguments 
+
+    return 0;
+}
