@@ -1,0 +1,51 @@
+#include<iostream>
+
+using namespace std;
+ 
+ class Animal{
+   public:
+   void speak(){
+    cout<<"speaking";
+   }
+ };
+
+ class dog : public Animal{
+    public:
+
+    void speak(){
+        cout<<"barking";
+    }
+ };
+class cat : public dog{
+    public:
+
+    void speak(){
+        cout<<"meowwww";
+    }
+ };
+
+ class c : public Animal , public dog , public cat{
+     
+ };
+
+int main(){
+
+    dog d;
+    d.speak();
+    cout<<endl;
+
+    Animal a;
+    a.speak();
+
+
+
+
+
+    // c object;
+    // object.Animal::speak();    //error 
+    // object.dog::speak(); // error
+    // object.cat::speak();
+
+    // This shows that ambiguity can be resolved only in the case of multiple inheritance
+
+}
