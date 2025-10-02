@@ -1,0 +1,46 @@
+#include<iostream>
+using namespace std;
+
+class student{
+    private:
+    int rollNo;
+    int age;
+    string name;
+
+    void study(){
+        cout<<"student is writing a poem"<<endl;
+    }
+    public:
+    void setter(int x){
+        age = x;
+    }
+    void getter(){
+        cout<<age<<endl;
+    }
+};
+
+class ugStudent : public student{
+
+    public:
+    string branch;
+    int height;
+
+    void branch_name(){
+        cout<<"branch name is" <<branch<<endl;
+    }
+
+};
+
+int main(){
+
+   student s;
+
+   s.setter(10);
+   s.getter();
+
+   ugStudent ug;
+   ug.branch = "Computer Engineering";
+   ug.branch_name();
+   
+
+}
