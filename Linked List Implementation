@@ -1,0 +1,24 @@
+#include<iostream>
+using namespace std;
+
+class Node{
+   
+   public:
+   int data ;
+   Node* next; // to point to the next node
+
+   Node(int value){    // contructor
+    this -> data = value; 
+    this -> next = NULL;
+   }
+
+};
+
+int main(){
+    
+    Node* node1 = new Node(10);  // new node bante hi it will call constructor
+    cout<<node1->data <<endl;
+    cout<<node1-> next<<endl;
+
+    return 0;
+}
